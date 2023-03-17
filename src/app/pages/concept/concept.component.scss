@@ -1,0 +1,142 @@
+@import 'variables.scss';
+
+.main {
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 60px;
+
+    &--top {
+        margin: 24px 0;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &--action {
+        margin: 24px 0;
+        padding: 24px;
+        background-color: $white;
+        border: 2px solid $mediumGray;
+        h1{
+            text-align: center;
+        }
+    }
+
+    .search {
+        background: transparent url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' class='bi bi-search' viewBox='0 0 16 16'%3E%3Cpath d='M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z'%3E%3C/path%3E%3C/svg%3E") no-repeat 13px center;
+        width: 300px;
+        padding: 10px 10px 10px 40px;
+        border: 2px solid $mediumGray;
+        outline: none;
+    }
+
+    h1 {
+        font-size: 20px;
+    }
+}
+
+input[type="range"] {
+    -webkit-appearance: none;
+    margin-right: 15px;
+    width: 200px;
+    height: 7px;
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 5px;
+    background-color: $purple;
+    background-size: 70% 100%;
+    background-repeat: no-repeat;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    background: $purple;
+    cursor: ew-resize;
+    box-shadow: 0 0 2px 0 #555;
+    transition: background .3s ease-in-out;
+}
+
+table {
+    width: 100%;
+    background-color: $white;
+}
+
+th,
+td {
+    padding: 10px;
+}
+
+table,
+th,
+td {
+    border: 1px solid $mediumGray;
+    border-collapse: collapse;
+}
+
+.table-img {
+    width: 30px;
+}
+
+.table-icon {
+    height: 100%;
+
+    &--img {
+        cursor: pointer;
+        margin: 0 10px;
+        width: 15px;
+    }
+}
+
+.form-grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2em;
+}
+
+.form-group{
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    margin-top: 16px;
+    label{
+        align-self: center;
+    }
+    input{
+        padding: 5px;
+        border: 2px solid $mediumGray;
+        outline: none;
+    }
+}
+
+.form-ranges{
+    .form-range{
+        margin-top: 24px;
+        display: grid;
+        grid-template-columns: 1fr 3fr;
+        label{
+            align-self: center;
+        }
+        &--item{
+            display: flex;
+            align-items: center;
+            input {
+                cursor: pointer;
+                width: 100%;
+                margin: 0 10px;
+            }
+        }
+    }
+}
+
+.bottom-buttons{
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    button{
+        margin: 0 10px;
+    }
+}
+
+.invalid-form{
+    border: 2px solid $red !important;
+}

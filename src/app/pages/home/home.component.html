@@ -1,0 +1,38 @@
+<div class="home-header">
+    <button class="btn btn-primary" routerLink="/actions">Agregar Pokemon</button>
+</div>
+<section class="home">
+    <section class="home--list">
+        <ng-container *ngFor="let i of pokemonList">
+            <div class="item" (click)="selectPokemon(i)">
+                <img class="item--img" [src]="i.image" alt="Pokemon IMG">
+                <p class="item--name">{{i.name}}</p>
+                <p class="item--type">{{i.type || 'Sin tipo'}}</p>
+                <div class="item--skills">
+                    <span class="item--skills--item attack">{{i.attack}}</span>
+                    <span class="item--skills--item defense">{{i.defense}}</span>
+                    <span class="item--skills--item hp">{{i.hp}}</span>
+                </div>
+            </div>
+        </ng-container>
+    </section>
+    <section class="home--pokemon" *ngIf="pokemonSelected != undefined">
+        <div class="options">
+            <img (click)="editPokemon(pokemonSelected.id)" src="assets/img/pen.png" alt="Pen Icon">
+            <img (click)="deletePokemon(pokemonSelected.id)" src="assets/img/trash.png" alt="Trash Icon">
+        </div>
+        <div class="item bg-primary">
+            <img class="item--img" [src]="pokemonSelected.image" alt="Pokemon IMG">
+            <p class="item--name">{{pokemonSelected.name}}</p>
+            <p class="item--type"><span class="bold">Tipo:</span> {{pokemonSelected.type || 'Sin tipo'}}</p>
+            <p class="item--description"><span class="bold">Si tuviera alguna descripción</span>, aqui iria: Lorem ipsum
+                dolor sit amet consectetur adipisicing elit. Harum, ratione. A nisi officiis ab placeat. Repellendus
+                ratione placeat esse repellat sunt quidem iure est impedit totam qui, culpa itaque. Porro.</p>
+            <div class="item--skills">
+                <span class="item--skills--item attack">{{pokemonSelected.attack}}</span>
+                <span class="item--skills--item defense">{{pokemonSelected.defense}}</span>
+                <span class="item--skills--item hp">{{pokemonSelected.hp}}</span>
+            </div>
+        </div>
+    </section>
+</section>

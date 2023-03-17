@@ -1,0 +1,32 @@
+@import 'variables.scss';
+
+.header{
+    height: 64px;
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: $header;
+    box-shadow: 0 0 10px rgba($color: #000000, $alpha: 0.3);
+    display: flex;
+    justify-content: space-between;
+    &--start{
+        &--img{
+            height: 100%;
+        }
+        span{
+            margin: 0 15px;
+            color: $white;
+        }
+    }
+    &--end{
+        &--menu{
+            cursor: pointer;
+            background: none;
+            border: none;
+            width: 20px;
+            overflow: hidden;
+            img{
+                width: 100%;
+            }
+        }
+    }
+}

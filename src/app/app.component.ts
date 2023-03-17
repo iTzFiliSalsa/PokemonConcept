@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
+import { LoaderService } from './libs/infraestructure/services/loader.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,26 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'PokemonConcept';
+
+  public isLoading: boolean;
+  public title = "PokemonConcept";
+
+  constructor(
+    public _loader: LoaderService,
+    private changeDetector : ChangeDetectorRef
+  ){
+    this.isLoading = false;
+    this._loader.isLoading.subscribe(
+      {
+        next: (v) => {
+          this.isLoading = v;
+        }
+      }
+    )
+  }
+
+  ngAfterContentChecked(): void {
+    this.changeDetector.detectChanges();
+  }
+
 }

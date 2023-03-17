@@ -1,0 +1,62 @@
+<section class="home">
+    <h1>Nuevo Pokemon</h1>
+    <hr>
+    <div class="container">
+        <form [formGroup]="form" (ngSubmit)="savePokemon()">
+            <div class="grid">
+                <div class="form-group">
+                    <div class="form-container">
+                        <label for="name">Nombre</label>
+                        <input placeholder="Nombre del pokemon" formControlName="name" type="text" name="name" id="name"
+                            class="form-item">
+                    </div>
+                    <div class="form-container">
+                        <label for="type">Tipo</label>
+                        <input placeholder="Tipo pokemon" formControlName="type" required type="text" name="type"
+                            id="type" class="form-item">
+                    </div>
+                    <div class="form-range">
+                        <label for="attack">Ataque</label>
+                        <div class="form-range--item">
+                            <span>0</span>
+                            <input formControlName="attack" required type="range" name="attack" id="attack" min="0"
+                                max="100">
+                            <span>100</span>
+                        </div>
+                    </div>
+                    <div class="form-range">
+                        <label for="defense">Defensa</label>
+                        <div class="form-range--item">
+                            <span>0</span>
+                            <input formControlName="defense" required type="range" name="defense" id="defense" min="0"
+                                max="100">
+                            <span>100</span>
+                        </div>
+                    </div>
+                    <div class="form-range">
+                        <label for="HP">Hp</label>
+                        <div class="form-range--item">
+                            <span>0</span>
+                            <input formControlName="hp" required type="range" name="hp" id="hp" min="0" max="100">
+                            <span>100</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-img">
+                    <ng-container *ngFor="let i of [1,1,1,1,1,1,1]; let j = index">
+                        <label [for]="j + 'j'" class="card-img--item">
+                            <input formControlName="image" [id]="j + 'j'" type="radio"
+                                [value]="'https://unpkg.com/pokeapi-sprites@2.0.2/sprites/pokemon/other/dream-world/'+(j + 1)+'.svg'"
+                                checked>
+                            <img [src]="'https://unpkg.com/pokeapi-sprites@2.0.2/sprites/pokemon/other/dream-world/'+(j + 1)+'.svg'"
+                                alt="Pokemon">
+                        </label>
+                    </ng-container>
+                </div>
+            </div>
+            <div class="align-end">
+                <input [disabled]="form.invalid" type="submit" class="btn btn-primary" value="Guardar">
+            </div>
+        </form>
+    </div>
+</section>

@@ -1,0 +1,75 @@
+@import 'variables.scss';
+
+.home {
+    position: relative;
+    top: 4em;
+    width: 80%;
+    margin: 0 auto;
+    background-color: $white;
+    padding: 20px;
+}
+
+h1 {
+    font-size: 20px;
+    margin-bottom: 8px;
+}
+
+.container {
+    margin-top: 20px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2em;
+    margin-bottom: 20px;
+}
+
+.form-range {
+    font-weight: bold;
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    &--item {
+        display: flex;
+
+        input {
+            cursor: pointer;
+            width: 100%;
+            margin: 0 10px;
+        }
+    }
+}
+
+.card-img {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 2em;
+
+    &--item {
+        position: relative;
+        height: 100px;
+        background-color: $softGray;
+        cursor: pointer;
+        overflow: hidden;
+        box-sizing: border-box;
+
+        &:has(input:checked) {
+            border: 2px solid green;
+        }
+
+        input {
+            opacity: 0;
+        }
+
+        img {
+            object-fit: cover;
+            width: 100%;
+        }
+    }
+}
+
+.align-end {
+    text-align: right;
+}

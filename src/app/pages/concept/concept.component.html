@@ -1,0 +1,101 @@
+<section class="main">
+    <h1>Listado de Pokemon</h1>
+    <div class="main--top">
+        <form [formGroup]="searchForm">
+            <input formControlName="search" placeholder="Buscar" type="search" class="search" name="search" id="search">
+        </form>
+        <button class="btn btn-purple" (click)="changeStatusShow(true);">
+            <img class="icon-img" src="assets/img/plus.png" alt="Add Icon">
+            <span>Nuevo</span>
+        </button>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Imagen</th>
+                <th>Ataque</th>
+                <th>Defensa</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody *ngFor="let i of pokemonListCopy">
+            <tr>
+                <td>{{i.name}}</td>
+                <td><img class="table-img" [src]="i.image" [alt]="i.name"></td>
+                <td>{{i.attack}}</td>
+                <td>{{i.defense}}</td>
+                <td class="table-icon">
+                    <img class="table-icon--img" (click)="editPokemon(i.id)" src="assets/img/pen-purple.png">
+                    <img class="table-icon--img" (click)="deletePokemon(i.id)" src="assets/img/trash-turtle.png">
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="main--action" *ngIf="showPokemonDetail">
+        <h1>{{edit ? 'Editar' : 'Nuevo'}} Pokemon</h1>
+        <form [formGroup]="form">
+            <div class="form-grid">
+                <div class="form-inputs">
+                    <div class="form-group">
+                        <label for="name">Nombre</label>
+                        <input [ngClass]="{'invalid-form': form.get('name')!.touched && form.get('name')!.invalid}"
+                            formControlName="name" type="text" placeholder="Nombre del pokemon" name="name" id="name"
+                            class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="image">Imagen</label>
+                        <input [ngClass]="{'invalid-form': form.get('image')!.touched && form.get('image')!.invalid}"
+                            formControlName="image" type="text" placeholder="Url" name="image" id="image"
+                            class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="type">Tipo</label>
+                        <input [ngClass]="{'invalid-form': form.get('type')!.touched && form.get('type')!.invalid}"
+                            formControlName="type" type="text" placeholder="Tipo de pokemon" name="type" id="type"
+                            class="form-control">
+                    </div>
+                </div>
+                <div class="form-ranges">
+                    <div class="form-range">
+                        <label for="attack">Ataque: </label>
+                        <div class="form-range--item">
+                            <span>0</span>
+                            <input formControlName="attack" name="attack" type="range" name="attack" id="attack" min="0"
+                                max="100">
+                            <span>100</span>
+                        </div>
+                    </div>
+                    <div class="form-range">
+                        <label for="defense">Defensa: </label>
+                        <div class="form-range--item">
+                            <span>0</span>
+                            <input formControlName="defense" name="defense" type="range" name="defense" id="defense"
+                                min="0" max="100">
+                            <span>100</span>
+                        </div>
+                    </div>
+                    <div class="form-range">
+                        <label for="hp">HP: </label>
+                        <div class="form-range--item">
+                            <span>0</span>
+                            <input formControlName="hp" name="hp" type="range" name="hp" id="hp" min="0" max="100">
+                            <span>100</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="bottom-buttons">
+                <button type="button" [disabled]="form.invalid" (click)="savePokemon()" class="btn btn-purple"
+                    id="savePokemon">
+                    <img class="icon-img" src="assets/img/save.png" alt="Add Icon">
+                    <span>Guardar</span>
+                </button>
+                <button type="button" class="btn btn-purple" (click)="changeStatusShow(false)" id="cancelPokemon">
+                    <img class="icon-img" src="assets/img/close.png" alt="Add Icon">
+                    <span>Cancelar</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</section>
