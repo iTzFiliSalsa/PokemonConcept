@@ -4,16 +4,20 @@ import { CommonModule } from '@angular/common';
 import { ConceptRoutingModule } from './concept-routing.module';
 import { ConceptComponent } from './concept.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { TestingDirective } from 'src/app/libs/infraestructure/directives/testing.directive';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 
 @NgModule({
   declarations: [
-    ConceptComponent
+    ConceptComponent,
+    TestingDirective
   ],
   imports: [
     CommonModule,
     ConceptRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SharedModule
   ]
 })
 export class ConceptModule { }

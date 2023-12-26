@@ -6,6 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpLoadingInterceptor } from './libs/infraestructure/interceptors/http-loading.interceptor';
 import { SharedModule } from './shared/shared.module';
+import { TestingDirective } from './libs/infraestructure/directives/testing.directive';
 
 @NgModule({
   declarations: [

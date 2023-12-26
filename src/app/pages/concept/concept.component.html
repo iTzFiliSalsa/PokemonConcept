@@ -21,9 +21,9 @@
         </thead>
         <tbody *ngFor="let i of pokemonListCopy">
             <tr>
-                <td>{{i.name}}</td>
-                <td><img class="table-img" [src]="i.image" [alt]="i.name"></td>
-                <td>{{i.attack}}</td>
+                <td><p [appTesting]="'yellow'">{{i.name | first:'upperCase'}}</p></td>
+                <td><img class="table-img" [src]="i.image" [alt]="i.name" [appImagenError]="'https://img.freepik.com/free-vector/oops-404-error-with-broken-robot-concept-illustration_114360-5529.jpg?w=2000'"></td>
+                <td appTesting>{{i.attack}}</td>
                 <td>{{i.defense}}</td>
                 <td class="table-icon">
                     <img class="table-icon--img" (click)="editPokemon(i.id)" src="assets/img/pen-purple.png">
@@ -42,6 +42,7 @@
                         <input [ngClass]="{'invalid-form': form.get('name')!.touched && form.get('name')!.invalid}"
                             formControlName="name" type="text" placeholder="Nombre del pokemon" name="name" id="name"
                             class="form-control">
+                        <small *ngIf="form.get('name')!.touched && form.get('name')!.invalid" class="text-danger">El nombre es invalido</small>
                     </div>
                     <div class="form-group">
                         <label for="image">Imagen</label>
@@ -58,7 +59,7 @@
                 </div>
                 <div class="form-ranges">
                     <div class="form-range">
-                        <label for="attack">Ataque: </label>
+                        <label for="attack">Ataque: {{actualValueSlider('attack')}}</label>
                         <div class="form-range--item">
                             <span>0</span>
                             <input formControlName="attack" name="attack" type="range" name="attack" id="attack" min="0"

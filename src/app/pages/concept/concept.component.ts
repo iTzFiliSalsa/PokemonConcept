@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Messages } from 'src/app/libs/constants/messages';
 import { Pokemon } from 'src/app/libs/infraestructure/interfaces/pokemon';
@@ -17,11 +17,13 @@ export class ConceptComponent implements OnInit {
   public form: FormGroup;
   public searchForm: FormGroup;
   public edit: boolean;
+  public onErrorImg: string;
 
   constructor(
     private _pokemon: PokemonService,
     private formBuilder: FormBuilder
   ) {
+    this.onErrorImg = "assets/img/404.png";
     this.edit = false;
     this.showPokemonDetail = false;
     this.pokemonList = new Array<Pokemon>();
@@ -66,6 +68,10 @@ export class ConceptComponent implements OnInit {
         }
       }
     )
+  }
+
+  public actualValueSlider(name: string){
+    return this.form.get(name)?.value;
   }
 
   public changeStatusShow(status: boolean): void {
